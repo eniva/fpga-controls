@@ -23,17 +23,18 @@ Implement this goodie in just two steps!
 
 2. Wire your inputs in your FPGA core. For example for a MiSTer core:
 ```systemverilog
-enhanced4wayjoy #(FAVOR_ZERO, FAVOR_ZERO, FAVOR_HORIZONTAL) player1
+enhanced4wayjoy #(FAVOR_ZERO, FAVOR_ZERO, DIR_HORIZONTAL) player1
 (
-	clk_sys,
-	{
-		p1_btn_up    | joy[3],
-		p1_btn_down  | joy[2],
-		p1_btn_left  | joy[1],
-		p1_btn_right | joy[0]
-	},
-	{m_p1_up, m_p1_down, m_p1_left, m_p1_right}, // Output wire to the core
-	status[16:13] // [3:0] User Options. Check "[UIPD]" in ./diagonal_prediction.sv.
+    clk_sys,
+    {
+        // p1_btn_x: keyboard, joy[x]: game pads
+        p1_btn_up    | joy[3],
+        p1_btn_down  | joy[2],
+        p1_btn_left  | joy[1],
+        p1_btn_right | joy[0]
+    },
+    {m_p1_up, m_p1_down, m_p1_left, m_p1_right}, // Output wire to the core
+    status[16:13] // [3:0] User Options. Check "[UIPD]" in ./diagonal_prediction.sv.
 );
 ```
 
