@@ -53,4 +53,4 @@ Users, however, have different preference on how their diagonal direction inputs
 
 **Notes**
 =============
-Long Live [MiSTer FPGA](https://github.com/MiSTer-devel/Main_MiSTer/wiki)!
+Long live [MiSTer FPGA](https://github.com/MiSTer-devel/Main_MiSTer/wiki)!
