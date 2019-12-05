@@ -1,6 +1,12 @@
 # **fpga-controls** #
-
 This is a SystemVerilog solution to handle multi-direcitonal inputs in attempt to predict the player's intentions.
+
+<p align="center">
+<img src="https://i.imgur.com/DklV94U.png" width="350px" alt="MiSTer Enhanced Experience Logo">
+</p>
+
+**fpga-controls** is part of **MiSTer Enhanced Experience project** to aim to improve MiSTer experience.
+
 
 A lot of systems and software are designed to work best on the controller shipped for them. As most users use their favorite controllers to play them on FPGA (like the awesome **MiSTer FPGA** system), more capable controllers are able to send inputs that the original systems were never prepared for. The biggest example is playing 4-way-only joystick systems on a dpad or arcade sticks with a 8-way gate.
 
