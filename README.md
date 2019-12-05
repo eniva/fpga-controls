@@ -39,7 +39,7 @@ enhanced4wayjoy #(FAVOR_ZERO, FAVOR_ZERO, DIR_HORIZONTAL) player1
         p1_btn_right | joy[0]
     },
     {m_p1_up, m_p1_down, m_p1_left, m_p1_right}, // Output wire to the core
-    status[16:13] // [3:0] User Options. Check "[UIPD]" in ./diagonal_prediction.sv.
+    status[16:13] // 4bit User Options. Check "[UIPD]" in ./diagonal.sv.
 );
 ```
 
