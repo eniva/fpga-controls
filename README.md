@@ -26,8 +26,15 @@ Implement this goodie in just two steps!
 
 1. Include controls_top.sv.
 
-2. Wire your inputs in your FPGA core. For example for a MiSTer core:
+2. Wire your inputs in your FPGA core. 
+
+**[4-Way]** For example for a MiSTer core:
 ```systemverilog
+//  parameters:
+//  1. What to do when both Up & Down switches are on: FAVOR_ZERO, FAVOR_UP, FAVOR_DOWN
+//  2. What to do when both Left & Right switches are on: FAVOR_ZERO, FAVOR_LEFT, FAVOR_RIGHT
+//  3. Favored direction on pure diagonal inputs: DIR_HORIZONTAL, DIR_VERTICAL
+//  For more information, check out "controls_top.sv"
 enhanced4wayjoy #(FAVOR_ZERO, FAVOR_ZERO, DIR_HORIZONTAL) player1
 (
     clk_sys,
@@ -45,11 +52,27 @@ enhanced4wayjoy #(FAVOR_ZERO, FAVOR_ZERO, DIR_HORIZONTAL) player1
 
 For more information, check "controls_top.sv". It provides **enhanced4wayjoy** and **enhanced2wayjoy** top level modules.
 
+## Available User Options
+
+**All Systems**
+* **None** - Does not do anything. Unpredictable outcome.
+* **No Movement** - This "Clear" option assumes the diagonal input is an error, and both input must be stopped to prevent any potential disasters. Some prefer this for games like Tetris.
+* **Vertical** - Always forces* to vertical directions.
+* **Horizontal** - Always forces* to horizontal directions.
+
+**4-Way-Only**
+* **New Direction** - Otherwise known as "Prediction", when diagonal input is received, it assumes the new direction is intended so the direction that was pressed later than the earlier direction is processed. This is the most preferred way and recommended for most systems.
+* **Old Direction** - The often called "Correction" is a way to respect the earlier direction and correct it to stay on course while ignoring the new direction in the diagonal input.
+
+**Forcing into one direction like this cannot prevent any movements if the opposing movement was pressed first (as we cannot predict future). It still prevents the other direction being pressed further.*
+
+**2-Way-Only systems will only have one over the other of the two*
+
 **Providing User Options**
 =============
 Module parameters are only intended for the developer as the system should always behave in one configuration. They should't be exposed to the user as it is unnecessary.
 
-Users, however, have different preference on how their diagonal direction inputs should be handled. The whole point is to make the controls feel responsive in a preferred way, so they should not be forced to one option. Expose the **input [3:0] m_mode** of enhancedcontroller module.
+Users, however, have different preference on how their diagonal direction inputs should be handled. The whole point is to make the controls feel responsive in a preferred way, so they should not be forced to one option. Expose the **input [3:0] m_mode** of enhanced2wayjoy/enhanced4wayjoy module.
 
 **Notes**
 =============
