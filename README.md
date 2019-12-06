@@ -56,17 +56,17 @@ For more information, check "controls_top.sv". It provides **enhanced4wayjoy** a
 
 **All Systems**
 * **None** - Does not do anything. Unpredictable outcome.
-* **No Movement** - This "Clear" option assumes the diagonal input is an error, and both input must be stopped to prevent any potential disasters. Some prefer this for games like Tetris.
 * **Vertical** - Always forces* to vertical directions.
 * **Horizontal** - Always forces* to horizontal directions.
+* **Stop** - This "Clear" option assumes the diagonal input is an error, and both input must be stopped to prevent any potential disasters. Some prefer this for games like Tetris.
 
 **4-Way-Only**
-* **New Direction** - Otherwise known as "Prediction", when diagonal input is received, it assumes the new direction is intended so the direction that was pressed later than the earlier direction is processed. This is the most preferred way and recommended for most systems.
-* **Old Direction** - The often called "Correction" is a way to respect the earlier direction and correct it to stay on course while ignoring the new direction in the diagonal input.
+* **Change Direction** - Otherwise known as "Prediction", when diagonal input is received, it assumes the new direction is intended so the direction that was pressed later than the earlier direction is processed. This is the most preferred way and recommended for most systems.
+* **Keep Direction** - The often called "Correction" is a way to respect the earlier direction and correct it to stay on course while ignoring the new direction in the diagonal input.
 
 **Forcing into one direction like this cannot prevent any movements if the opposing movement was pressed first (as we cannot predict future). It still prevents the other direction being pressed further.*
 
-**2-Way-Only systems will only have one over the other of the two*
+**2-Way-Only systems will only have one over the other.*
 
 **Providing User Options**
 =============
