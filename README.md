@@ -5,11 +5,11 @@ This is a SystemVerilog solution to handle multi-direcitonal inputs in attempt t
 <img src="https://i.imgur.com/DklV94U.png" width="350px" alt="MiSTer Enhanced Experience Logo">
 </p>
 
-**fpga-controls** is part of the **MiSTer Enhanced Experience project** aimed at improving MiSTer experience.
+**fpga-controls** is part of the **MiSTer Enhanced Experience project** aimed at improving the MiSTer experience.
 
-A lot of systems and software are designed to work best on the controller shipped for them. As most users use their favorite controllers to play them on FPGA (like the awesome **MiSTer FPGA** system), more capable controllers are able to send inputs that the original systems were never prepared for. The biggest example is playing 4-way-only joystick systems on a dpad or arcade sticks with a 8-way gate.
+A lot of systems and software are designed to work best on the controller shipped with them. As most users use their favorite controllers to play them on FPGA (like the awesome **MiSTer FPGA** system), more capable controllers are able to send inputs that the original systems were never prepared for. The biggest example is playing 4-way-only joystick systems on a dpad or arcade sticks with a 8-way or round gate.
 
-Diagonal inputs can easily be pressed by accident when you're quickly changing directions. This makes it quite difficult to play games shipped with 2-way or 4-way only controllers.
+Diagonal inputs can easily be sent by accident when you're quickly changing directions. This makes it quite difficult to play games shipped with 2-way or 4-way only controllers. This is a solution to make the controls feel responsive and predictable in those systems.
 
 **Features**
 =============
@@ -34,7 +34,7 @@ Implement this goodie in just two steps!
 //  1. What to do when both Up & Down switches are on: FAVOR_ZERO, FAVOR_UP, FAVOR_DOWN
 //  2. What to do when both Left & Right switches are on: FAVOR_ZERO, FAVOR_LEFT, FAVOR_RIGHT
 //  3. Favored direction on pure diagonal inputs: DIR_HORIZONTAL, DIR_VERTICAL
-//  For more information, check out "controls_top.sv"
+//  For detailed documentation, check out the comments in "./controls_top.sv".
 enhanced4wayjoy #(FAVOR_ZERO, FAVOR_ZERO, DIR_HORIZONTAL) player1
 (
     clk_sys,
@@ -46,13 +46,15 @@ enhanced4wayjoy #(FAVOR_ZERO, FAVOR_ZERO, DIR_HORIZONTAL) player1
         p1_btn_right | joy[0]
     },
     {m_p1_up, m_p1_down, m_p1_left, m_p1_right}, // Output wire to the core
-    status[16:13] // 4bit User Options. Check "[UIPD]" in ./diagonal.sv.
+    status[16:13] // 4bit User Options. Check "[UIPD]" in "./diagonal.sv".
 );
 ```
 
 For more information, check "controls_top.sv". It provides **enhanced4wayjoy** and **enhanced2wayjoy** top level modules.
 
 ## Available User Options
+
+There's no one perfect solution for all 4-way-only games. Each game works best one way while others can be hurt by it. It's best to keep all of these options available for the users to decide.
 
 **All Systems**
 * **None** - Does not do anything. Unpredictable outcome.
