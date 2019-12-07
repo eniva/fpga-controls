@@ -26,9 +26,14 @@ Implement this goodie in just two steps!
 
 1. Include controls_top.sv.
 
-2. Wire your inputs in your FPGA core. 
+2. Add a User Option (MiSTer):
+```systemverilog
+	"ODG,Diagonal,Default,Change Direction,Keep Direction,Vertical,Horizontal,Stop;",
+```
 
-**[4-Way]** For a MiSTer core:
+3. Wire your inputs in your FPGA core. 
+
+**[4-Way]** (MiSTer):
 ```systemverilog
 //  parameters:
 //  1. What to do when both Up & Down switches are on: FAVOR_ZERO, FAVOR_UP, FAVOR_DOWN
@@ -49,7 +54,7 @@ enhanced4wayjoy #(FAVOR_ZERO, FAVOR_ZERO, DIR_HORIZONTAL) player1
     status[16:13] // 4bit User Options. Check "[UIPD]" in "./diagonal.sv".
 );
 ```
-**[2-Way]** For a MiSTer core:
+**[2-Way]** (MiSTer):
 ```systemverilog
 //  parameters:
 //  1. Orientation of the 2-way: DIR_HORIZONTAL, DIR_VERTICAL
