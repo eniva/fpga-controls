@@ -1,5 +1,5 @@
 # **fpga-controls** #
-This is a SystemVerilog solution to handle multi-direcitonal inputs in attempt to predict the player's intentions.
+This is a SystemVerilog solution to handle multi-directional inputs in attempt to predict the player's intentions.
 
 <p align="center">
 <img src="https://i.imgur.com/DklV94U.png" width="350px" alt="MiSTer Enhanced Experience Logo">
@@ -20,7 +20,7 @@ Diagonal inputs can easily be sent by accident when you're quickly changing dire
 
 **Implementation**
 =============
-You can use the indiviual modules if you just want one small part of the solution, but for a proper implementation simply use the enhancedcontroller module in controls_top.sv.
+You can use the indiviual modules if you just want one small part of the solution, but for a proper implementation simply use the enhanced2wayjoy/enhanced4wayjoy module in controls_top.sv.
 
 Implement this goodie in just two steps!
 
