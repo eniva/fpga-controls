@@ -28,7 +28,7 @@ Implement this goodie in just two steps!
 
 2. Wire your inputs in your FPGA core. 
 
-**[4-Way]** For example for a MiSTer core:
+**[4-Way]** For a MiSTer core:
 ```systemverilog
 //  parameters:
 //  1. What to do when both Up & Down switches are on: FAVOR_ZERO, FAVOR_UP, FAVOR_DOWN
@@ -49,6 +49,24 @@ enhanced4wayjoy #(FAVOR_ZERO, FAVOR_ZERO, DIR_HORIZONTAL) player1
     status[16:13] // 4bit User Options. Check "[UIPD]" in "./diagonal.sv".
 );
 ```
+**[2-Way]** For a MiSTer core:
+```systemverilog
+//  parameters:
+//  1. Orientation of the 2-way: DIR_HORIZONTAL, DIR_VERTICAL
+//  For detailed documentation, check out the comments in "./controls_top.sv".
+enhanced2wayjoy #(DIR_HORIZONTAL) player1
+(
+    clk_sys,
+    {
+        // p1_btn_x: keyboard, joy[x]: game pads
+        p1_btn_up    | joy[3],
+        p1_btn_down  | joy[2],
+        p1_btn_left  | joy[1],
+        p1_btn_right | joy[0]
+    },
+    {m_p1_up, m_p1_down, m_p1_left, m_p1_right} // Output wire to the core
+);
+```
 
 For more information, check "controls_top.sv". It provides **enhanced4wayjoy** and **enhanced2wayjoy** top level modules.
 
@@ -57,18 +75,16 @@ For more information, check "controls_top.sv". It provides **enhanced4wayjoy** a
 There's no one perfect solution for all 4-way-only games. Each game works best one way while others can be hurt by it. It's best to keep all of these options available for the users to decide.
 
 **All Systems**
-* **None** - Does not do anything. Unpredictable outcome.
-* **Vertical** - Always forces* to vertical directions.
-* **Horizontal** - Always forces* to horizontal directions.
-* **Stop** - This "Clear" option assumes the diagonal input is an error, and both input must be stopped to prevent any potential disasters. Some prefer this for games like Tetris.
+* **Default** - Does not do anything like before. Unpredictable outcome.
 
 **4-Way-Only**
 * **Change Direction** - Otherwise known as "Prediction", when diagonal input is received, it assumes the new direction is intended so the direction that was pressed later than the earlier direction is processed. This is the most preferred way and recommended for most systems.
 * **Keep Direction** - The often called "Correction" is a way to respect the earlier direction and correct it to stay on course while ignoring the new direction in the diagonal input.
+* **Vertical** - Always forces* to vertical directions.
+* **Horizontal** - Always forces* to horizontal directions.
+* **Stop** - This "Clear" option assumes the diagonal input is an error, and both input must be stopped to prevent any potential disasters. Some prefer this for games like Tetris.
 
 **Forcing into one direction like this cannot prevent any movements if the opposing movement was pressed first (as we cannot predict future). It still prevents the other direction being pressed further.*
-
-**2-Way-Only systems will only have one over the other.*
 
 **Providing User Options**
 =============
