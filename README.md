@@ -26,9 +26,9 @@ Implement this goodie in just two steps!
 
 1. Include controls_top.sv.
 
-2. Add a User Option (MiSTer):
+2. Add a User Option (MiSTer, for example, provides core configuration string):
 ```systemverilog
-	"ODG,Diagonal,Default,Change Direction,Keep Direction,Vertical,Horizontal,Stop;",
+"ODG,Diagonal,Default,Change Direction,Keep Direction,Vertical,Horizontal,Stop;",
 ```
 
 3. Wire your inputs in your FPGA core. 
