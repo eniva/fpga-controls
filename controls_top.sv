@@ -108,7 +108,7 @@ module enhanced4wayjoy #(parameter
 	( wire_vh, wire_hpd );
 
 	diagonal_prediction #(PDIP_FAVOR_DIRECTION) pdiagonal
-	( wire_hpd, lpInput, pInput, m_mode );
+	( wire_hpd, lpInput, pInput, userMode );
 
 endmodule
 
