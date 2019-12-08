@@ -5,7 +5,7 @@ This is a SystemVerilog solution to handle multi-directional inputs in attempt t
 <img src="https://i.imgur.com/DklV94U.png" width="350px" alt="MiSTer Enhanced Experience Logo">
 </p>
 
-**fpga-controls** is part of the **MiSTer Enhanced Experience project** aimed at improving the MiSTer experience.
+**fpga-controls** is part of the **MiSTer Enhanced Experience project** aimed at improving the MiSTer experience. For more information, please check out the [Enex wiki](https://github.com/eniva/MisSTer_Guides/wiki/Enhanced-Experience-Project).
 
 A lot of systems and software are designed to work best on the controller shipped with them. As most users use their favorite controllers to play them on FPGA (like the awesome **MiSTer FPGA** system), more capable controllers are able to send inputs that the original systems were never prepared for. The biggest example is playing 4-way-only joystick systems on a dpad or arcade sticks with a 8-way or round gate.
 
