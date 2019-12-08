@@ -96,7 +96,3 @@ There's no one perfect solution for all 4-way-only games. Each game works best o
 Module parameters are only intended for the developer as the system should always behave in one configuration. They should't be exposed to the user as it is unnecessary.
 
 Users, however, have different preference on how their diagonal direction inputs should be handled. The whole point is to make the controls feel responsive in a preferred way, so they should not be forced to one option. Expose the **input [3:0] m_mode** of enhanced2wayjoy/enhanced4wayjoy module.
-
-**Notes**
-=============
-Long live [MiSTer FPGA](https://github.com/MiSTer-devel/Main_MiSTer/wiki)!
